@@ -16,26 +16,26 @@ public class SecondLargestElementInArray {
     }
 
     private static int getSecondtLargest(int arr[], int n){
-        int res = -1, largest = 0;
+        int secondLargest = -1, largest = 0;
         for (int i = 1; i < n ; i++) {
             if (arr[i] > arr[largest]){
                 //if element at new index in stream is greater than largest element index
                 //move current largest index to second largest index
                 //move new element index to largest index
-                res = largest;
+                secondLargest = largest;
                 largest = i;
             } else if (arr[i] != arr[largest]) {
                 // if element at new index is less than largest but greater than second largest
                 //or if we have not yet found second largest
-                if (arr[i] > arr[res] || res == -1){
-                    res = i;
+                if (arr[i] > arr[secondLargest] || secondLargest == -1){
+                    secondLargest = i;
                 }
             }//else ignore if it equal
 
         }
 
 
-        return res;
+        return secondLargest;
 
 
     }
