@@ -15,14 +15,14 @@ public class LargestElementInArray {
     }
 
     private static int getLargest(int arr[], int n){
-        int res = 0; //assume first index in array contains the largest element
+        int largest = 0; //assume first index in array contains the largest element
         for (int i = 1; i < n; i++) {
             //if value at current index is greater than value at existing largest index,
             // then replace the largest index with current index
-            if(arr[res] < arr[i]){
-                res = i;
+            if(arr[largest] < arr[i]){
+                largest = i;
             }
         }
-        return res;
+        return largest;
     }
 }
