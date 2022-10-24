@@ -11,15 +11,24 @@ public class MoveZeroToEnd {
             System.out.println(arr[i]+" ");
         }
 
-       int[] newArray = MoveZeroToEnd(arr, 6);
+    //    int[] newArray = moveZeroToEndMethod1(arr, 6);
+    // //    System.out.println(res);
+    //    System.out.println("After moving zeros to end");
+    //     for (int i = 0; i < n; i++) {
+    //         System.out.println(newArray[i]+" ");
+    //     }
+
+        int[] newArray = moveZeroToEndMethod2(arr);
     //    System.out.println(res);
-       System.out.println("After moving zeros to end");
+       System.out.println("After moving zeros to end with method 2");
         for (int i = 0; i < n; i++) {
             System.out.println(newArray[i]+" ");
         }
+
+
     }
 
-    private static int[] MoveZeroToEnd(int[] arr, int n) {
+    private static int[] moveZeroToEndMethod1(int[] arr, int n) {
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
@@ -36,6 +45,26 @@ public class MoveZeroToEnd {
             }
         }
         return arr;
+    }
+
+
+    public static int[] moveZeroToEndMethod2(int[] array) {
+
+        int count = 0;//this represents the index of the current 0 element
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != 0) {
+                //we increment the count whenever we have non zero element
+                //if we find a non-zero element, we swap with the current zero element which is at index 'count'
+                //if we have not found a zero element yet, the swap happens at the same index
+                int temp = array[i];
+                array[i] = array[count];
+                array[count] = temp;
+                count++;
+            }
+        }
+
+        return array;
+        
     }
 
 }
