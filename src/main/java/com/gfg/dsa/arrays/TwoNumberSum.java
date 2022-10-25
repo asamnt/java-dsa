@@ -29,7 +29,7 @@ public class TwoNumberSum {
     //time O(n sqr)
     //space O(1)
     private static int[] twoNumberSumNaive(int[] arr, int targetSum) {
-        for (int i = 0; i < arr.length; i++) { //loop for each number
+        for (int i = 0; i < arr.length; i++) { //loop for each element
             int firstNum = arr[i];
             for (int j = i+1; j < arr.length; j++) {//compare with every other remaining element
                 int secondNum = arr[j];
@@ -44,14 +44,13 @@ public class TwoNumberSum {
     //time O(n)
     //space O(n)
     private static int[] twoNumberSumEfficient(int[] arr, int targetSum) {
-        HashSet<Integer> nums = new HashSet<>();
-        for (int num : arr) {
-            int potentialMatch = targetSum - num;
-            if (nums.contains(potentialMatch)) {
+        HashSet<Integer> nums = new HashSet<>();//create hashset
+        for (int num : arr) {//loop  once 
+            int potentialMatch = targetSum - num; //find potential match
+            if (nums.contains(potentialMatch)) { //check if potential match in hashset
                 return new int[] {num, potentialMatch};
-                
             }else{
-                nums.add(num);
+                nums.add(num);//if potential match not present, just add the element to the hashset..because it could be potential match for some other number
             }
         }
         return new int[0];
