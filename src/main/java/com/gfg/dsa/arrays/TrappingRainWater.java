@@ -22,12 +22,20 @@ public class TrappingRainWater {
         lMax[0] = arr[0]; // we assign the lMax for the first element the first element itself
         for (int i = 1; i < arr.length; i++) {// we go from the second element to the last element
             lMax[i] = lMax[i - 1] > arr[i] ? lMax[i - 1] : arr[i];
+            // we compare the current element with the lMax of the
+            // previous element, whichever is bigger is the lMax
+            // of the current element
         }
 
         // pre computing the rMax array
         rMax[arr.length - 1] = arr[arr.length - 1];// we assign the rMax for the last element as the last element itself
-        for (int j = arr.length - 2; j > 0; j--) {// we go from the second last element to the first element
+        for (int j = arr.length - 2; j > 0; j--) {
+            // reverse loop - we go from the second last element to the first
+            // element
             rMax[j] = rMax[j + 1] > arr[j] ? rMax[j + 1] : arr[j];
+            // we compare the current element with the rMax of the
+            // previous element, whichever is bigger is the rMax
+            // of the current element
         }
 
         for (int i = 1; i < arr.length - 1; i++) {// we loop leaving the first and the last element
