@@ -11,8 +11,8 @@ public class PrintNto1Recur {
         print1toNfunc(n);
 
     }
-    //time theeta(n)
-    //space n+1
+    //time O(n)
+    //space O(n+1)
     static void printNto1func(int n){
         if (n==0) return;
         System.out.print(n + "");
