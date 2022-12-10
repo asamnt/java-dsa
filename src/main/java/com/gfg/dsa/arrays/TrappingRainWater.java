@@ -9,9 +9,35 @@ public class TrappingRainWater {
 
         int result = findMaxWaterTrapperNaive(arr);
         System.out.println("Water than be stored is " + result);
+        result = findMaxTrappedWaterEfficient(arr);
+        System.out.println("Water than be stored is " + result);
 
     }
 
+    private static int findMaxTrappedWaterEfficient(int[] arr) {
+        int result = 0;
+        int lMax[] = new int[arr.length];
+        int rMax[] = new int[arr.length];// we are trying to pre compute lMax and rMax arrays
+        // pre computing lMax array
+        lMax[0] = arr[0]; // we assign the lMax for the first element the first element itself
+        for (int i = 1; i < arr.length; i++) {// we go from the second element to the last element
+            lMax[i] = lMax[i - 1] > arr[i] ? lMax[i - 1] : arr[i];
+        }
+
+        // pre computing the rMax array
+        rMax[arr.length - 1] = arr[arr.length - 1];// we assign the rMax for the last element as the last element itself
+        for (int j = arr.length - 2; j > 0; j--) {// we go from the second last element to the first element
+            rMax[j] = rMax[j + 1] > arr[j] ? rMax[j + 1] : arr[j];
+        }
+
+        for (int i = 1; i < arr.length - 1; i++) {// we loop leaving the first and the last element
+            result = result + Math.max(lMax[i], rMax[i]) - arr[i];
+        }
+
+        return result;
+    }
+
+    // Time complexity O(n2)
     private static int findMaxWaterTrapperNaive(int[] arr) {
 
         int result = 0;
