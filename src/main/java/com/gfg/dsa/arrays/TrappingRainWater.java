@@ -5,7 +5,7 @@ public class TrappingRainWater {
     public static void main(String[] args) {
         // int arr[] = new int[] { 3, 0, 1, 2, 5 };
         // int arr[] = new int[] { 5, 4, 3 };
-        int arr[] = new int[] { 8, 1, 7, 2, 6, 8 };
+        int[] arr = new int[] { 8, 1, 7, 2, 6, 8 };
 
         int result = findMaxWaterTrapperNaive(arr);
         System.out.println("Water than be stored is " + result);
@@ -16,8 +16,8 @@ public class TrappingRainWater {
 
     private static int findMaxTrappedWaterEfficient(int[] arr) {
         int result = 0;
-        int lMax[] = new int[arr.length];
-        int rMax[] = new int[arr.length];// we are trying to pre compute lMax and rMax arrays
+        int[] lMax = new int[arr.length];
+        int[] rMax = new int[arr.length];// we are trying to pre compute lMax and rMax arrays
         // pre computing lMax array
         lMax[0] = arr[0]; // we assign the lMax for the first element the first element itself
         for (int i = 1; i < arr.length; i++) {// we go from the second element to the last element
@@ -39,7 +39,7 @@ public class TrappingRainWater {
         }
 
         for (int i = 1; i < arr.length - 1; i++) {// we loop leaving the first and the last element
-            result = result + Math.max(lMax[i], rMax[i]) - arr[i];
+            result = result + Math.min(lMax[i], rMax[i]) - arr[i];
         }
 
         return result;
