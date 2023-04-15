@@ -22,10 +22,6 @@ public class StockSpan {
         }
     }
 
-
-
-
-
     public static void printSpanEfficient(int[] arr){
         Stack<Integer> s = new Stack<>();
         s.add(0);
