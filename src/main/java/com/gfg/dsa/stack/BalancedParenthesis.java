@@ -24,12 +24,12 @@ public class BalancedParenthesis {
         Deque<Character> s = new ArrayDeque<>();
         for (int i = 0; i < str.length(); i++) {
             char x = str.charAt(i);
-            if(x=='(' || x=='[' || x=='{')//if any opening bracket push to the stack
+            if(x=='(' || x=='[' || x=='{')//if any opening bracket, then push to the stack
                 s.push(x);
             else{//match with top of the stack
-                if(s.isEmpty()) return false;//if stack is empty then it means there is no matching bracket - so return false
-                else if(!matching(s.peek(),x)) return false;//if stack is not empty check if matching with top item from stack
-                else s.pop();//else matching which means pop it out so that you can compare the next element in the queue
+                if(s.isEmpty()) return false;//if stack is empty, then it means there is no matching bracket - so return false
+                else if(!matching(s.peek(),x)) return false;//if stack is not empty, check if matching with top item from stack
+                else s.pop();//else matching - which means pop it out so that you can compare the next element in the queue
             }
         }
         return (s.isEmpty());//if after processing the passed string, the stack still has elements then bracket don't match, so we return false
