@@ -8,6 +8,8 @@ public class LevelOrderTraversalLineByLine {
     public static void main(String[] args) {
         Node root = createNode();
         printLevelLineByLine(root);
+        System.out.println("printing without marker");
+        printLevelLineByLineWithoutMarker(root);
     }
 
     private static Node createNode() {
@@ -23,6 +25,8 @@ public class LevelOrderTraversalLineByLine {
         return root;
     }
 
+    //time complexity O(n)
+    //aux space Theta(W)
     public static void printLevelLineByLine(Node root){
 
         if(root==null) return;
@@ -44,6 +48,24 @@ public class LevelOrderTraversalLineByLine {
             if(currNode.right!=null)//then if the right node of the current node is not null then we push it to the queue
                 q.add(currNode.right);
         }
+    }
+    public static void printLevelLineByLineWithoutMarker(Node root){
+        if(root== null) return;
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int count = q.size();
+            for (int i = 0; i < count ; i++) {
+                Node currNode = q.poll();
+                System.out.print(currNode.key+" ");
+                if(currNode.left!=null)
+                    q.add(currNode.left);
+                if(currNode.right!=null)
+                    q.add(currNode.right);
+            }
+            System.out.println();
+        }
+
 
 
     }
