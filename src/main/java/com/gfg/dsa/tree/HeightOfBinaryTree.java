@@ -27,6 +27,5 @@ public class HeightOfBinaryTree {
         }else{
             return Math.max(getHeight(root.left),getHeight(root.right))+ 1;
         }
-
     }
 }
