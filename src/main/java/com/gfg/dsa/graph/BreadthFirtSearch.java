@@ -28,6 +28,7 @@ public class BreadthFirtSearch {
         breadthFirstSearch(adj,5, 0);
     }
 
+    //level order traversal but maintain array visited to not add the same node again
     public static void breadthFirstSearch(ArrayList<ArrayList<Integer>> adj, int vertices, int source){
         boolean[] visited = new boolean[vertices+1];//we maintain this array to make sure we dont revisit a visited node
         Queue<Integer> q = new LinkedList<Integer>();
