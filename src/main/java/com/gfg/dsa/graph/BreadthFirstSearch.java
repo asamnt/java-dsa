@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BreadthFirtSearch {
+public class BreadthFirstSearch {
 
     public static void addEdge(ArrayList<ArrayList<Integer>> adj, int v, int u){
         adj.get(u).add(v);
