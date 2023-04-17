@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BreadthFirstSearch {
+public class ShortestPathUnweightedGraph {
 
     public static void addEdge(ArrayList<ArrayList<Integer>> adj, int v, int u){
         adj.get(u).add(v);
@@ -25,21 +25,29 @@ public class BreadthFirstSearch {
         addEdge(adj,2,4);
         addEdge(adj,3,4);
 
-        breadthFirstSearch(adj,5, 0);
+        int[] dist = new int[5];
+        for (int i = 0; i < 5 ; i++) {
+            dist[i]=Integer.MAX_VALUE;
+        }
+        dist[0]=0;
+        breadthFirstSearch(adj,5, 0, dist);
+        for(int i=0;i<5;i++){
+            System.out.print(dist[i]+" ");
+        }
     }
 
-    //level order traversal but maintain array visited to not add the same node again
-    //we want to go level by level so queue is required
-    public static void breadthFirstSearch(ArrayList<ArrayList<Integer>> adj, int vertices, int source){
+    public static void breadthFirstSearch(ArrayList<ArrayList<Integer>> adj, int vertices, int source, int[] dist){
         boolean[] visited = new boolean[vertices+1];//we maintain this array to make sure we dont revisit a visited node
         Queue<Integer> q = new LinkedList<Integer>();
         visited[source] = true;
         q.add(source);
         while(!q.isEmpty()){//just like level order traversal, we pop each node from the queue and then add its children to queue
+            //vertices that are closest are tracversed first
             int u = q.poll();
-            System.out.print(u+" ");
+//            System.out.print(u+" ");
             for (int v : adj.get(u)){//we take out the arraylist at the first index of the array list and iterate through it to visit the adjacent neighbours
                 if(!visited[v]){//if the neighbour has been visited then we dont add it to the queue as it would be already present or processed
+                    dist[v]=dist[u]+1;//we add the distance of the current root(u) from the original root and 1
                     visited[v] = true;
                     q.add(v);
                 }

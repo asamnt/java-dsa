@@ -33,7 +33,7 @@ public class DepthFirstSearch {
 
     //pre order traversal = root, left, right
     private static void depthFirstSearchRec(ArrayList<ArrayList<Integer>> adj, int source, boolean[] visited) {
-       visited[source]= true;
+        visited[source]= true;
         System.out.print(source+" ");//printing root
         for(int vertex : adj.get(source)){
             if(!visited[vertex]){//if a node has not been visited then call DFS on that
