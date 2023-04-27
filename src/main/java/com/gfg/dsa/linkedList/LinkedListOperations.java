@@ -1,6 +1,6 @@
 package com.gfg.dsa.linkedList;
 
-public class Test {
+public class LinkedListOperations {
     public static void main(String[] args) {
         Node head = new Node(10);
         Node temp1 = new Node(20);
