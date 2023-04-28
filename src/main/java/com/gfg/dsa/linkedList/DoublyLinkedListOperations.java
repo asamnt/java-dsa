@@ -15,5 +15,28 @@ public class DoublyLinkedListOperations {
         temp2.prev = temp1;
         temp2.next = temp3;
         temp3.prev = temp2;
+
+        printlist(head);
+        head = insertBegin(head, 45);
+        printlist(head);
+
+
+    }
+
+    static void printlist(NodeDL head){
+        NodeDL curr=head;
+        while(curr!=null){
+            System.out.print(curr.data + " ");
+            curr=curr.next;
+        }
+        System.out.println();
+    }
+
+    public static NodeDL insertBegin(NodeDL head, int data){
+        NodeDL temp = new NodeDL(data);
+        temp.next = head;
+        if(head!=null)
+            head.prev = temp;
+        return temp;
     }
 }

@@ -43,7 +43,7 @@ public class ReverseDoublyLinkedList {
             curr = curr.prev;//instead of going curr.next we go curr.prev as we have already switched pointers
         }
         if(temp!=null){
-            head = temp.prev;
+            head = temp.prev;//temp will be the second node, so its previous will be the head
         }
         return head;
 
