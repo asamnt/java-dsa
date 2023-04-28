@@ -11,8 +11,8 @@ public class FindNthNodeFromEndOfLinkedList {
         head.next = temp1;
         temp1.next = temp2;
         temp2.next = temp3;
-
         printNthNodeFromEnd(head, 3);
+        printNthNodeFromEnd(head, 6);
     }
 
     static void printlist(Node head){
@@ -29,6 +29,7 @@ public class FindNthNodeFromEndOfLinkedList {
 
         Node firstPointer = head;
         for (int i = 0; i < n ; i++) {//we let the firstPointer traverse till the nth node
+            if(firstPointer==null) return;
             firstPointer = firstPointer.next;
         }
         //then assign a second pointer to head - this means the difference between first pointer and second is 'n'
