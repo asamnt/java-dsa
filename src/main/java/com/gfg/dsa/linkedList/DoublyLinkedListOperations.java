@@ -39,4 +39,27 @@ public class DoublyLinkedListOperations {
             head.prev = temp;
         return temp;
     }
+
+    public static NodeDL deleteHead(NodeDL head){
+        if(head==null) return null;
+        if(head.next==null) return null;
+        else{
+            head = head.next;
+            head.prev = null;
+            return head;
+        }
+    }
+
+    public static NodeDL deleteLastNode(NodeDL head){
+        if(head==null) return null;
+        if(head.next==null) return null;
+        NodeDL curr = head;
+        while(curr.next!=null){//we will reach till the last node
+            curr = curr.next;
+        }
+        curr.prev.next = null;
+        //once we reach the last node, we mark its previous nodes next pointer to null -
+        // so that the previous node does not point to anything and becomes the last node
+        return head;
+    }
 }
